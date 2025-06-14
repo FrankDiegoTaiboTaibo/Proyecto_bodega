@@ -20,79 +20,133 @@
             $nombreArticulo = trim($_POST['nombreArticulo']);
         }
 
-        //Validar dosis
-        if (!isset($_POST['dosis']) ||  empty($_POST['dosis'])) {
-            $datos['errores']['dosis'] = 'El campo <b>Dosis</b> está vacio.';
+        //Validar codigo isp
+        if (!isset($_POST['codigoIsp']) ||  empty($_POST['codigoIsp'])) {
+            $datos['errores']['codigoIsp'] = 'El campo <b>Código</b> está vacio.';
         } else {
-            $dosis = trim($_POST['dosis']);
+            $codigoIsp = trim($_POST['codigoIsp']);
         }
 
-        //Validar presentacion
+          //Validar codigo barra
+        if (!isset($_POST['codigoBarra']) ||  empty($_POST['codigoBarra'])) {
+            $datos['errores']['codigoBarra'] = 'El campo <b>Código bodega</b> está vacio.';
+        } else {
+            $codigoBarra = trim($_POST['codigoBarra']);
+        }
+
+              //Validar concentración
+        if (!isset($_POST['concentracion']) ||  empty($_POST['concentracion'])) {
+            $datos['errores']['concentracion'] = 'El campo <b>Concentración</b> está vacio.';
+        } else {
+            $concentracion = trim($_POST['concentracion']);
+        }
+
+        //Validar dosis
+        if (!isset($_POST['formaFarmaceutica']) ||  empty($_POST['formaFarmaceutica'])) {
+            $datos['errores']['formaFarmaceutica'] = 'El campo <b>Forma farmaceutica</b> está vacio.';
+        } else {
+            $formaFarmaceutica = trim($_POST['formaFarmaceutica']);
+        }
+
+        //Validar Via administración
+        if (!isset($_POST['viaAdministracion']) ||  empty($_POST['viaAdministracion'])) {
+            $datos['errores']['viaAdministracion'] = 'El campo <b>Vía de administración</b> está vacio.';
+        } else {
+            $viaAdministracion = trim($_POST['viaAdministracion']);
+        }
+
+             //Validar Unidad de medida
+        if (!isset($_POST['unidadMedida']) ||  empty($_POST['unidadMedida'])) {
+            $datos['errores']['unidadMedida'] = 'El campo <b>Unidad de medida</b> está vacio.';
+        } else {
+            $unidadMedida = trim($_POST['unidadMedida']);
+        }
+    
+                     //Validar Presentacion
         if (!isset($_POST['presentacion']) ||  empty($_POST['presentacion'])) {
-            $datos['errores']['presentacion'] = 'El campo <b>Presentación</b> está vacio.';
+            $datos['errores']['presentacion'] = 'El campo <b>presentacion</b> está vacio.';
         } else {
             $presentacion = trim($_POST['presentacion']);
         }
 
-        //Validar cantidad
-        if (!isset($_POST['cantidad'])) {
-            $datos['errores']['cantidad'] = 'El campo <b>Cantidad</b> es inválido.';
+                 //Validar Laboratorio
+        if (!isset($_POST['laboratorio']) ||  empty($_POST['laboratorio'])) {
+            $datos['errores']['laboratorio'] = 'El campo <b>Laboratorio</b> está vacio.';
         } else {
-            $cantidad = trim($_POST['cantidad']);
-            if (!is_numeric($cantidad) || intval($cantidad) < 0)
-                $datos['errores']['cantidad'] = 'El campo <b>Cantidad</b> es inválido. El valor debe ser de tipo numérico mayor a cero.';
+            $laboratorio = trim($_POST['laboratorio']);
+        }
+       
+
+                     //Validar Tipo de articulo
+        if (!isset($_POST['tipoArticulo']) ||  empty($_POST['tipoArticulo'])) {
+            $datos['errores']['tipoArticulo'] = 'El campo <b>Tipo de artículo</b> está vacio.';
+        } else {
+            $tipoArticulo = trim($_POST['tipoArticulo']);
         }
 
-        //Validar fecha
-        if (!isset($_POST['fechaVencimiento']) || empty($_POST['fechaVencimiento'])) {
-            $datos['errores']['fechaVencimiento'] = 'El campo <b>Fecha Vencimiento</b> esta en blanco.';
+        //Validar Stock minimo
+        if (!isset($_POST['stockMinimo'])) {
+            $datos['errores']['stockMinimo'] = 'El campo <b>Stock minimo</b> es inválido.';
         } else {
-            $fechaVencimiento = trim($_POST['fechaVencimiento']);
-            $valores = explode('/', $fechaVencimiento);
-            if (!(count($valores) == 3 && checkdate($valores[1], $valores[0], $valores[2])))
-                $datos['errores']['fechaVencimiento'] = 'El campo <b>Fecha Vencimiento</b> es inválida.';
-            else
-                $fechaVencimiento = $valores[2] . '-' . $valores[1] . '-' . $valores[0];
+            $stockMinimo = trim($_POST['stockMinimo']);
+            if (!is_numeric($stockMinimo) || intval($stockMinimo) < 0)
+                $datos['errores']['stockMinimo'] = 'El campo <b>Stock minimo</b> es inválido. El valor debe ser de tipo numérico mayor a cero.';
         }
-
+       
 
         if (!(isset($datos['errores'])) || is_null($datos['errores'])) {
 
-              $sql_exist = "SELECT * 
-                   FROM articulo
+              
+          $sql_exist = "SELECT * 
+                   FROM articulos
                    WHERE nombre_articulo  = '$nombreArticulo' 
-                   AND dosis_articulo = '$dosis'";
+                   AND codigo_isp = '$codigoIsp' 
+                   AND codigo_barra = '$codigoBarra'
+                   AND concentracion = '$concentracion'";
 
         $query_exist = mysqli_query($con, $sql_exist);
+        
 
         if (mysqli_num_rows($query_exist) > 0) {
           $datos['errores']['sql'] = "Ya existe el articulo con esa dosis";
 
         } else {
 
-               $sql_insert = "INSERT INTO articulo (nombre_articulo,
-                                                                  dosis_articulo,
-                                                                  presentacion_articulo, 
-                                                                  cantidad_articulo, 
-                                                                  fecha_venciimiento,
-                                                                  observacion,
-                                                                  usuario_editor,
-                                                                  estado_articulo)
+               $sql_insert = "INSERT INTO articulos (nombre_articulo,
+                                                                 codigo_isp,
+                                                                  codigo_barra, 
+                                                                  concentracion, 
+                                                                  forma_farmaceutica,
+                                                                  via_administracion,
+                                                                  unidad_medida,
+                                                                  presentacion,
+                                                                  laboratorio,
+                                                                  tipo_articulo,
+                                                                  stock_minimo,
+                                                                  activo,
+                                                                  fecha_creacion,
+                                                                  usuario_creador_id)
                                   VALUES('$nombreArticulo',
-                                          '$dosis',
+                                          '$codigoIsp',
+                                          '$codigoBarra',
+                                          '$concentracion',
+                                          '$formaFarmaceutica',
+                                          '$viaAdministracion',
+                                          '$unidadMedida',
                                           '$presentacion',
-                                          '$cantidad',
-                                          '$fechaVencimiento',
-                                          '$',
-                                          '$user_id',
-                                          1)";
+                                          '$laboratorio',
+                                          '$tipoArticulo',
+                                          '$stockMinimo',
+                                          1,
+                                          CURRENT_TIMESTAMP, 
+                                          '$user_id')";
 
           $query_insert = mysqli_query($con, $sql_insert);
 
           if (!$query_insert)
             $datos['errores']['sql'] = "Error en la carga.";
           else {
-            $datos['exito'] = "El cargo fue creado con éxito.";
+            $datos['exito'] = "El Artículo fue creado con éxito.";
           }
 
 

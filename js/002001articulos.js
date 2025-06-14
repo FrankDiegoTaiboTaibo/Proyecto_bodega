@@ -15,11 +15,16 @@ $(document).ready(function () {
 $("#guardar_articulo").submit(function (event) {
   $('#guardar_datos').attr("disabled", true);
   var nombreArticulo = $("#nombreArticulo").val();
-  var dosis = $("#dosis").val();
+  var codigoIsp = $("#codigoIsp").val();
+  var codigoBarra = $("#codigoBarra").val();
+  var concentracion = $("#concentracion").val();
+  var formaFarmaceutica = $("#formaFarmaceutica").val();
+  var viaAdministracion = $("#viaAdministracion").val();
+  var unidadMedida = $("#unidadMedida").val();
   var presentacion = $("#presentacion").val();
-  var cantidad = $("#cantidad").val();
-  var fechaVencimiento = $("#fechaVencimiento").val();
-  var observacion = $("#observacion").val();
+  var laboratorio = $("#laboratorio").val();
+  var tipoArticulo = $("#tipoArticulo").val();
+  var stockMinimo = $("#stockMinimo").val();
   var action = 'ajax';
 
   $.ajax(
@@ -29,11 +34,16 @@ $("#guardar_articulo").submit(function (event) {
       data: {
         action: action,
         nombreArticulo: nombreArticulo,
-        dosis: dosis,
+        codigoIsp: codigoIsp,
+        codigoBarra: codigoBarra,
+        concentracion: concentracion,
+        formaFarmaceutica: formaFarmaceutica,
+        viaAdministracion: viaAdministracion,
+        unidadMedida: unidadMedida,
         presentacion: presentacion,
-        cantidad: cantidad,
-        fechaVencimiento: fechaVencimiento,
-        observacion: observacion
+        laboratorio: laboratorio,
+        tipoArticulo: tipoArticulo,
+        stockMinimo: stockMinimo
       },
       dataType: "json",
       beforeSend: function (objeto) {
@@ -48,11 +58,16 @@ $("#guardar_articulo").submit(function (event) {
         var class_contenedor_error = 'has-error has-feedback';
         var class_span_error = 'glyphicon glyphicon-remove form-control-feedback';
         var valores = ['nombreArticulo',
-                       'dosis',
+                       'codigoIsp',
+                       'codigoBarra',
+                       'concentracion',
+                       'formaFarmaceutica',
+                       'viaAdministracion',
+                       'unidadMedida',
                        'presentacion',
-                       'cantidad',
-                       'fechaVencimiento',
-                       'observacion',
+                       'laboratorio',
+                       'tipoArticulo',
+                       'stockMinimo',
                       'sql'];
 
         if (datos.hasOwnProperty('errores')) {
@@ -66,11 +81,15 @@ $("#guardar_articulo").submit(function (event) {
 
         for (var i = 0; i < valores.length; i++) {
           contenedor = $('#' + valores[i]).closest(".form-group ");
+
+               if(valores[i] != 'formaFarmaceutica'&& valores[i] != 'viaAdministracion'&& valores[i] != 'unidadMedida'&& valores[i] != 'tipoArticulo')
           span = $('#' + valores[i]).siblings();
 
           if (errores.hasOwnProperty(valores[i])) {
             list_error += '<li>' + errores[valores[i]] + '</li>';
             contenedor.addClass(class_contenedor_error);
+                           if(valores[i] != 'formaFarmaceutica'&& valores[i] != 'viaAdministracion'&& valores[i] != 'unidadMedida'&& valores[i] != 'tipoArticulo')
+
             span.addClass(class_span_error);
           }
           else {
