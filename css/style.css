@@ -1,0 +1,489 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?ke9mbl');
+  src:  url('fonts/icomoon.eot?ke9mbl#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ke9mbl') format('truetype'),
+    url('fonts/icomoon.woff?ke9mbl') format('woff'),
+    url('fonts/icomoon.svg?ke9mbl#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pegar:before {
+  content: "\e92c";
+}
+.icon-meta:before {
+  content: "\e900";
+}
+.icon-km:before {
+  content: "\e901";
+}
+.icon-validacion:before {
+  content: "\e902";
+}
+.icon-desperfecto:before {
+  content: "\e903";
+}
+.icon-buscar-auto:before {
+  content: "\e904";
+}
+.icon-bodega:before {
+  content: "\e905";
+}
+.icon-agenda:before {
+  content: "\e906";
+}
+.icon-gente:before {
+  content: "\e907";
+}
+.icon-mapa-b:before {
+  content: "\e908";
+}
+.icon-perfil:before {
+  content: "\e909";
+}
+.icon-multiples-usuarios:before {
+  content: "\e90a";
+}
+.icon-notas:before {
+  content: "\e90b";
+}
+.icon-barrera:before {
+  content: "\e90c";
+}
+.icon-edificios:before {
+  content: "\e90d";
+}
+.icon-candado:before {
+  content: "\e90e";
+}
+.icon-buscar-casa:before {
+  content: "\e90f";
+}
+.icon-estadistica-c:before {
+  content: "\e910";
+}
+.icon-concesionaria:before {
+  content: "\e911";
+}
+.icon-auto:before {
+  content: "\e912";
+}
+.icon-calendario-reloj:before {
+  content: "\e913";
+}
+.icon-contactos-b:before {
+  content: "\e914";
+}
+.icon-contactos-a:before {
+  content: "\e915";
+}
+.icon-equipo-de-trabajo:before {
+  content: "\e916";
+}
+.icon-reunion:before {
+  content: "\e917";
+}
+.icon-analytics:before {
+  content: "\e918";
+}
+.icon-auto-carga-c:before {
+  content: "\e919";
+}
+.icon-auto-carga-b:before {
+  content: "\e91a";
+}
+.icon-auto-reparacion-d:before {
+  content: "\e91b";
+}
+.icon-engranaje-c:before {
+  content: "\e91c";
+}
+.icon-encuesta:before {
+  content: "\e91d";
+}
+.icon-presentacion:before {
+  content: "\e91e";
+}
+.icon-buscar-usuario:before {
+  content: "\e91f";
+}
+.icon-detalle-encuesta:before {
+  content: "\e920";
+}
+.icon-vehiculos:before {
+  content: "\e921";
+}
+.icon-accidente:before {
+  content: "\e922";
+}
+.icon-lapiz:before {
+  content: "\e923";
+}
+.icon-auto-reparacion-a:before {
+  content: "\e924";
+}
+.icon-auto-carga-a:before {
+  content: "\e925";
+}
+.icon-auto-reparacion-c:before {
+  content: "\e926";
+}
+.icon-auto-precio:before {
+  content: "\e927";
+}
+.icon-auto-bodega:before {
+  content: "\e928";
+}
+.icon-pistones:before {
+  content: "\e929";
+}
+.icon-matricula:before {
+  content: "\e92a";
+}
+.icon-contrato:before {
+  content: "\e92b";
+}
+.icon-auto-entrega:before {
+  content: "\e92e";
+}
+.icon-dinero:before {
+  content: "\e92f";
+}
+.icon-motor:before {
+  content: "\e930";
+}
+.icon-auto-reparacion-b:before {
+  content: "\e931";
+}
+.icon-herramienta:before {
+  content: "\e932";
+}
+.icon-logo-citroen-a:before {
+  content: "\e933";
+}
+.icon-logo-citroen-b:before {
+  content: "\e934";
+}
+.icon-logo-ds-a:before {
+  content: "\e935";
+}
+.icon-oficina:before {
+  content: "\e936";
+}
+.icon-hogar:before {
+  content: "\e937";
+}
+.icon-archivo-imagen:before {
+  content: "\e938";
+}
+.icon-carpeta-descargar:before {
+  content: "\e939";
+}
+.icon-carpeta-cargar:before {
+  content: "\e93a";
+}
+.icon-limpiar:before {
+  content: "\e93b";
+}
+.icon-logo-citroen-c:before {
+  content: "\e93c";
+}
+.icon-logo-opel-a:before {
+  content: "\e93d";
+}
+.icon-logo-hyundai-c:before {
+  content: "\e93e";
+}
+.icon-logo-hyundai-a:before {
+  content: "\e93f";
+}
+.icon-logo-opel-b:before {
+  content: "\e940";
+}
+.icon-logo-hyundai-b:before {
+  content: "\e941";
+}
+.icon-logo-ds-b:before {
+  content: "\e942";
+}
+.icon-telefon:before {
+  content: "\e943";
+}
+.icon-direccion:before {
+  content: "\e944";
+}
+.icon-mapa-a:before {
+  content: "\e94b";
+}
+.icon-reloj-b:before {
+  content: "\e94e";
+}
+.icon-reloj-a:before {
+  content: "\e94f";
+}
+.icon-alarma:before {
+  content: "\e950";
+}
+.icon-calendario:before {
+  content: "\e953";
+}
+.icon-casillero:before {
+  content: "\e95c";
+}
+.icon-usuario-b:before {
+  content: "\e971";
+}
+.icon-usuarios:before {
+  content: "\e972";
+}
+.icon-agregar-usuario:before {
+  content: "\e973";
+}
+.icon-eliminar-usuario:before {
+  content: "\e974";
+}
+.icon-usuario-a:before {
+  content: "\e976";
+}
+.icon-recargar:before {
+  content: "\e984";
+}
+.icon-binoculares:before {
+  content: "\e985";
+}
+.icon-buscar:before {
+  content: "\e986";
+}
+.icon-agrandar:before {
+  content: "\e987";
+}
+.icon-alejar:before {
+  content: "\e988";
+}
+.icon-llave-b:before {
+  content: "\e98d";
+}
+.icon-llave-a:before {
+  content: "\e98e";
+}
+.icon-bloquear:before {
+  content: "\e98f";
+}
+.icon-desbloquear:before {
+  content: "\e990";
+}
+.icon-reparacion:before {
+  content: "\e991";
+}
+.icon-equalizador:before {
+  content: "\e993";
+}
+.icon-engranaje-b:before {
+  content: "\e994";
+}
+.icon-engranaje-a:before {
+  content: "\e995";
+}
+.icon-grafico:before {
+  content: "\e99a";
+}
+.icon-estadistica-b:before {
+  content: "\e99b";
+}
+.icon-estadistica-a:before {
+  content: "\e99c";
+}
+.icon-stats-bars2:before {
+  content: "\e99d";
+}
+.icon-metrica-b:before {
+  content: "\e9a6";
+}
+.icon-metrica-a:before {
+  content: "\e9a7";
+}
+.icon-basurero:before {
+  content: "\e9ac";
+}
+.icon-camion:before {
+  content: "\e9b0";
+}
+.icon-switch:before {
+  content: "\e9b6";
+}
+.icon-lista:before {
+  content: "\e9ba";
+}
+.icon-arbol:before {
+  content: "\e9bc";
+}
+.icon-nube:before {
+  content: "\e9c1";
+}
+.icon-nube-descargar:before {
+  content: "\e9c2";
+}
+.icon-nube-cargar:before {
+  content: "\e9c3";
+}
+.icon-nube-check:before {
+  content: "\e9c4";
+}
+.icon-descargar-b:before {
+  content: "\e9c5";
+}
+.icon-cargar-a:before {
+  content: "\e9c6";
+}
+.icon-descargar-a:before {
+  content: "\e9c7";
+}
+.icon-tierra:before {
+  content: "\e9ca";
+}
+.icon-vista:before {
+  content: "\e9ce";
+}
+.icon-vista-bloqueada:before {
+  content: "\e9d1";
+}
+.icon-brillo:before {
+  content: "\e9d4";
+}
+.icon-contraste:before {
+  content: "\e9d5";
+}
+.icon-brillo-contraste:before {
+  content: "\e9d6";
+}
+.icon-estrella-vacia:before {
+  content: "\e9d7";
+}
+.icon-estrella-media:before {
+  content: "\e9d8";
+}
+.icon-estrella-llena:before {
+  content: "\e9d9";
+}
+.icon-advertencia:before {
+  content: "\ea07";
+}
+.icon-notificacion:before {
+  content: "\ea08";
+}
+.icon-pregunta:before {
+  content: "\ea09";
+}
+.icon-mas:before {
+  content: "\ea0a";
+}
+.icon-menos:before {
+  content: "\ea0b";
+}
+.icon-info:before {
+  content: "\ea0c";
+}
+.icon-cancelar:before {
+  content: "\ea0d";
+}
+.icon-bloqueado:before {
+  content: "\ea0e";
+}
+.icon-cruz:before {
+  content: "\ea0f";
+}
+.icon-check:before {
+  content: "\ea10";
+}
+.icon-entrar:before {
+  content: "\ea13";
+}
+.icon-salir:before {
+  content: "\ea14";
+}
+.icon-loop:before {
+  content: "\ea2e";
+}
+.icon-flecha-arriba-izq-a:before {
+  content: "\ea31";
+}
+.icon-flecha-arriba-a:before {
+  content: "\ea32";
+}
+.icon-flecha-arriba-der-a:before {
+  content: "\ea33";
+}
+.icon-flecha-der-a:before {
+  content: "\ea34";
+}
+.icon-flecha-abajo-der-a:before {
+  content: "\ea35";
+}
+.icon-flecha-abajo-a:before {
+  content: "\ea36";
+}
+.icon-flecha-abajo-izq-a:before {
+  content: "\ea37";
+}
+.icon-flecha-izq-a:before {
+  content: "\ea38";
+}
+.icon-flecha-arriba-izq-b:before {
+  content: "\ea39";
+}
+.icon-flecha-arriba-b:before {
+  content: "\ea3a";
+}
+.icon-flecha-arriba-der-b:before {
+  content: "\ea3b";
+}
+.icon-flecha-der-b:before {
+  content: "\ea3c";
+}
+.icon-flecha-abajo-der-b:before {
+  content: "\ea3d";
+}
+.icon-flecha-abajo-b:before {
+  content: "\ea3e";
+}
+.icon-flecha-abajo-izq-b:before {
+  content: "\ea3f";
+}
+.icon-flecha-izq-b:before {
+  content: "\ea40";
+}
+.icon-table:before {
+  content: "\ea71";
+}
+.icon-parrafo-justificado:before {
+  content: "\ea7a";
+}
+.icon-compartir:before {
+  content: "\ea82";
+}
+.icon-archivo-pdf:before {
+  content: "\eadf";
+}
+.icon-archivo-word:before {
+  content: "\eae1";
+}
+.icon-archivo-excel:before {
+  content: "\eae2";
+}
