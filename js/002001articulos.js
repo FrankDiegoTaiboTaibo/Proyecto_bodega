@@ -7,6 +7,7 @@ $(document).ready(function () {
     minDate: 'now',
 
   });
+  load(1);
  
 });
 
@@ -21,7 +22,6 @@ $("#guardar_articulo").submit(function (event) {
   var formaFarmaceutica = $("#formaFarmaceutica").val();
   var viaAdministracion = $("#viaAdministracion").val();
   var unidadMedida = $("#unidadMedida").val();
-  var presentacion = $("#presentacion").val();
   var laboratorio = $("#laboratorio").val();
   var tipoArticulo = $("#tipoArticulo").val();
   var stockMinimo = $("#stockMinimo").val();
@@ -40,7 +40,6 @@ $("#guardar_articulo").submit(function (event) {
         formaFarmaceutica: formaFarmaceutica,
         viaAdministracion: viaAdministracion,
         unidadMedida: unidadMedida,
-        presentacion: presentacion,
         laboratorio: laboratorio,
         tipoArticulo: tipoArticulo,
         stockMinimo: stockMinimo
@@ -64,7 +63,6 @@ $("#guardar_articulo").submit(function (event) {
                        'formaFarmaceutica',
                        'viaAdministracion',
                        'unidadMedida',
-                       'presentacion',
                        'laboratorio',
                        'tipoArticulo',
                        'stockMinimo',
@@ -111,12 +109,15 @@ $("#guardar_articulo").submit(function (event) {
   event.preventDefault();
 });
 
-/* function load(page) {
+function load(page) {
   var q = $("#q").val();
   $("#loader").fadeIn("slow");
   $.ajax({
     url:
-      "./ajax/001002buscar_usuarios.php?action=ajax&page=" + page + "&q=" + q,
+      "./ajax/002001buscar_articulo.php?action=ajax&page=" +
+      page +
+      "&q=" +
+      q,
     beforeSend: function (objeto) {
       $("#loader").html('<img src="./img/ajax-loader.gif"> Cargando...');
     },
@@ -126,34 +127,39 @@ $("#guardar_articulo").submit(function (event) {
     },
   });
 }
- */
 
+function cambiar_estado(id, pagina) {
 
+  var action = 'ajax';
 
-
-/* $("#guardar_usuario").submit(function (event) {
-  $("#guardar_datos").attr("disabled", true);
-
-  var parametros = $(this).serialize();
   $.ajax({
     type: "POST",
-    url: "ajax/001002nuevo_usuario.php",
-    data: parametros,
+    url: "./ajax/001002cambiar_estado.php",
+    data: {
+      action: action,
+      id: id
+    },
+    dataType: "json",
     beforeSend: function (objeto) {
-      $("#resultados_ajax").html("Mensaje: Cargando...");
+      $('#resultados').html('<img src="./img/ajax-loader.gif"> Cargando...');
     },
     success: function (datos) {
-      $("#resultados_ajax").html(datos);
-      $("#guardar_datos").attr("disabled", false);
-      load(1);
-    },
-  });
-  event.preventDefault();
-});
- */
 
+      var msg = '';
 
+      if (datos.hasOwnProperty('error')) {
+        msg = mensaje_retro('danger', 'Error', datos['errores']);
+      }
+      else {
+        msg = mensaje_retro('success', 'Bien hecho', datos['exito']);
+        load(pagina);
+      }
 
+      $('#resultados').html(msg);
+    }
+  })
+
+}
 
 //_______________________________Mensajes de retroalimentación
 function mensaje_retro(tipo, titulo, texto) {

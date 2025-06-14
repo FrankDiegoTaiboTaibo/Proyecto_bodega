@@ -119,12 +119,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="presentacion" class="col-sm-4 control-label">Presentación</label>
-                                <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="presentacion" name="presentacion" placeholder="Ej: Caja con 20 comprimidos">
-                                </div>
-                            </div>
 
                             <div class="form-group">
                                 <label for="laboratorio" class="col-sm-4 control-label">Laboratorio</label>

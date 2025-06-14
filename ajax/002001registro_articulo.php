@@ -62,12 +62,6 @@
             $unidadMedida = trim($_POST['unidadMedida']);
         }
     
-                     //Validar Presentacion
-        if (!isset($_POST['presentacion']) ||  empty($_POST['presentacion'])) {
-            $datos['errores']['presentacion'] = 'El campo <b>presentacion</b> está vacio.';
-        } else {
-            $presentacion = trim($_POST['presentacion']);
-        }
 
                  //Validar Laboratorio
         if (!isset($_POST['laboratorio']) ||  empty($_POST['laboratorio'])) {
@@ -119,7 +113,6 @@
                                                                   forma_farmaceutica,
                                                                   via_administracion,
                                                                   unidad_medida,
-                                                                  presentacion,
                                                                   laboratorio,
                                                                   tipo_articulo,
                                                                   stock_minimo,
@@ -133,7 +126,6 @@
                                           '$formaFarmaceutica',
                                           '$viaAdministracion',
                                           '$unidadMedida',
-                                          '$presentacion',
                                           '$laboratorio',
                                           '$tipoArticulo',
                                           '$stockMinimo',
