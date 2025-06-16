@@ -116,7 +116,7 @@
                                                                   laboratorio,
                                                                   tipo_articulo,
                                                                   stock_minimo,
-                                                                  activo,
+                                                                  estado_articulo,
                                                                   fecha_creacion,
                                                                   usuario_creador_id)
                                   VALUES('$nombreArticulo',

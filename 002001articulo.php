@@ -34,7 +34,7 @@
   <?php
   include("navbar.php");
   ?> 
-    <div class="container">
+    <div class="container-fluid">
     <div class="panel panel-primary">
     <div class="panel-heading">
         <div class="btn-group pull-right">
@@ -45,8 +45,8 @@
       <div class="panel-body">
       <?php
       include("modal/002001registro_articulo.php");
-      /* include("modal/001002editar_usuarios.php");
-      include("modal/001002registro_usuarios.php");
+       include("modal/002001editar_articulo.php");
+     /* include("modal/001002registro_usuarios.php");
       include("modal/001002ver_usuarios.php"); */
      /*  
       
@@ -58,13 +58,37 @@
         
             <div class="form-group row">
               <label for="q" class="col-md-1 control-label">Artículo:</label>
-              <div class="col-md-5">
+              <div class="col-md-3">
                 <input type="text" class="form-control" id="q" placeholder="Nombre Artículo" onkeyup='load(1);'>
               </div>
+
+              <label for="fil_tipo" class="col-sm-1 control-label">Tipo</label>
+            <div class='col-sm-2'>
+              <select id="fil_tipo" class='selectpicker form-control' title="Seleccione el tipo" onchange='load(1);'>
+                <option value="" selected>TODOS</option>
+                <option value="Medicamento">Medicamento</option>
+                                        <option value="Insumo Médico">Insumo Médico</option>
+                                        <option value="Dispositivo Médico">Dispositivo Médico</option>
+                                        <option value="Vacuna">Vacuna</option>
+                                        <option value="Material de Curación">Material de Curación</option>
+                                        <option value="Producto de Laboratorio">Producto de Laboratorio</option>
+                                        <option value="Elemento de Protección Personal">Elemento de Protección Personal</option>
+                                        <option value="Otros">Otros</option>
+              </select>
+            </div>
+
+          <label for="fil_estado" class="col-sm-1 control-label">Estado</label>
+            <div class='col-sm-2'>
+              <select id="fil_estado" class='selectpicker form-control' title="Seleccione el estado" onchange='load(1);'>
+                <option value="" selected>TODOS</option>
+                <option value="1">Habilitado</option>
+                <option value="0">Deshabilitado</option>
+              </select>
+            </div>
               
               
               
-              <div class="col-md-3">
+              <div class="col-md-2">
                 <button type="button" class="btn btn-default" onclick='load(1);'>
                   <span class="glyphicon glyphicon-search" ></span> Buscar</button>
                 <span id="loader"></span>

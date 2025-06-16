@@ -15,9 +15,9 @@
       $id = intval($_POST['id']);
 
       $sql_update = "UPDATE articulos
-                      SET activo = CASE WHEN activo = 1 THEN 0
-                                                  WHEN activo = 0 THEN 1
-                                                  ELSE activo
+                      SET estado_articulo = CASE WHEN estado_articulo = 1 THEN 0
+                                                  WHEN estado_articulo = 0 THEN 1
+                                                  ELSE estado_articulo
                                               END
                       WHERE id_articulo = '$id'";
 
