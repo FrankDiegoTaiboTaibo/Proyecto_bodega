@@ -62,13 +62,12 @@
           <thead>
             <tr class="info">
               <th>Descripción Arículo</th>
+              <th>Tipo</th>
           <th>Via Administración</th>
         <th>Laboratorio</th>
-        <th>Unidad Medida</th>
           <th>Código ISP</th>
           <th>Código Barra</th>
           <th>Stock Mínimo</th>
-          <th>Creador</th>
               
               <th class='text-right'>Acciones</th>
             </tr>
@@ -92,23 +91,16 @@
                         $fecha_creacion=$row['fecha_creacion'];
                          $usuario_creador_id=$row['usuario_creador_id'];
 
-                         $select_user = "SELECT user_name 
-                                         FROM users 
-                                         WHERE user_id = '$usuario_creador_id'";
-                        $query_user = mysqli_query($con, $select_user);
-
-                      $row_nombre = mysqli_fetch_array($query_user);
-                  $nombre_creador = $row_nombre['user_name'];
+                    
             ?>
               <tr>
-                  <td><?php echo $nombre_articulo.' '.$forma_farmaceutica.' '.$concentracion ; ?></td>
-            <td><?php echo $tipo_articulo.' '.$via_administracion;?></td>
+                  <td><?php echo $nombre_articulo.' '.$concentracion ; ?></td>
+                              <td><?php echo $tipo_articulo;?></td>
+            <td><?php echo $forma_farmaceutica.' '.$via_administracion;?></td>
             <td><?php echo $laboratorio;?></td>
-            <td><?php echo $unidad_medida;?></td>
             <td><?php echo $codigo_isp;?></td>
             <td><?php echo $codigo_barra;?></td>
             <td><?php echo $stock_minimo;?></td>
-             <td><?php echo $nombre_creador;?></td>
 <?php
               ?>
                 <td class='text-right'>
