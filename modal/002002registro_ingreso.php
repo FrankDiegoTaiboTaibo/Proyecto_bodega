@@ -101,14 +101,14 @@
                          <div class="form-group">
                                 <label for="cantidad" class="col-sm-5 control-label">Cantidad</label>
                                 <div class="col-sm-7">
-                                    <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Ej: Cantidad de unidades ingresadas."  >
+                                    <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Ej: 120."  >
                                 </div>
                             </div>
 
                       <div class="form-group">
                         <label for="lote" class="col-sm-5 control-label" >Lote</label>
                         <div class="col-sm-7">
-                          <input type="text" class="form-control" id="lote" name="lote"  placeholder='Ej: Código de lote del producto.'>
+                          <input type="text" class="form-control" id="lote" name="lote"  placeholder='Ej: LOTE-PRC-2458.'>
                           <span></span>
                         </div>                      
                       </div>
@@ -146,13 +146,24 @@
                         </div>
                       </div>
 
-                      <div class="form-group">
+                             <div class="form-group">
                         <label for="observacion" class="col-sm-5 control-label" >Observacion</label>
                         <div class="col-sm-7">
                           <textarea id="observacion" class="form-control" name="observacion" placeholder="Ej: Comentarios adicionales como estado del embalaje, diferencias." cols="34" style="resize: vertical;" maxlength="150"></textarea>
                           <span></span>
                         </div>                      
                       </div>
+
+                                            <div class="form-group">
+<label for="archivo" class="col-sm-5 control-label">Carga Documento</label>
+<div class="col-sm-7">
+  <input id="archivo" name="archivo" type="file" accept=".pdf" >
+</div>
+</div>
+
+               
+
+
 
                     </div>
 
