@@ -5,10 +5,9 @@ require_once("../config/conexion.php");
 if (isset($_POST['id_articulo'])) {
     $id_articulo = intval($_POST['id_articulo']);
     
-    $sql = "SELECT forma_farmaceutica, via_administracion, laboratorio, codigo_isp, codigo_barra 
+    $sql = "SELECT *
             FROM articulos 
-            WHERE id_articulo = $id_articulo 
-            LIMIT 1";
+            WHERE id_articulo = $id_articulo";
     
     $query = mysqli_query($con, $sql);
     

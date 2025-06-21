@@ -22,19 +22,19 @@
 
         //Validar codigo isp
         if (!isset($_POST['codigoIsp']) ||  empty($_POST['codigoIsp'])) {
-            $datos['errores']['codigoIsp'] = 'El campo <b>Código</b> está vacio.';
+            $datos['errores']['codigoIsp'] = 'El campo <b>Código ISP</b> está vacio.';
         } else {
             $codigoIsp = trim($_POST['codigoIsp']);
         }
 
-          //Validar codigo barra
+        //Validar codigo barra
         if (!isset($_POST['codigoBarra']) ||  empty($_POST['codigoBarra'])) {
-            $datos['errores']['codigoBarra'] = 'El campo <b>Código bodega</b> está vacio.';
+            $datos['errores']['codigoBarra'] = 'El campo <b>Código Barra</b> está vacio.';
         } else {
             $codigoBarra = trim($_POST['codigoBarra']);
         }
 
-              //Validar concentración
+        //Validar concentración
         if (!isset($_POST['concentracion']) ||  empty($_POST['concentracion'])) {
             $datos['errores']['concentracion'] = 'El campo <b>Concentración</b> está vacio.';
         } else {
@@ -43,7 +43,7 @@
 
         //Validar dosis
         if (!isset($_POST['formaFarmaceutica']) ||  empty($_POST['formaFarmaceutica'])) {
-            $datos['errores']['formaFarmaceutica'] = 'El campo <b>Forma farmaceutica</b> está vacio.';
+            $datos['errores']['formaFarmaceutica'] = 'El campo <b>Forma Farmacéutica</b> está vacio.';
         } else {
             $formaFarmaceutica = trim($_POST['formaFarmaceutica']);
         }
@@ -55,23 +55,23 @@
             $viaAdministracion = trim($_POST['viaAdministracion']);
         }
 
-             //Validar Unidad de medida
+        //Validar Unidad de medida
         if (!isset($_POST['unidadMedida']) ||  empty($_POST['unidadMedida'])) {
             $datos['errores']['unidadMedida'] = 'El campo <b>Unidad de medida</b> está vacio.';
         } else {
             $unidadMedida = trim($_POST['unidadMedida']);
         }
-    
 
-                 //Validar Laboratorio
+
+        //Validar Laboratorio
         if (!isset($_POST['laboratorio']) ||  empty($_POST['laboratorio'])) {
             $datos['errores']['laboratorio'] = 'El campo <b>Laboratorio</b> está vacio.';
         } else {
             $laboratorio = trim($_POST['laboratorio']);
         }
-       
 
-                     //Validar Tipo de articulo
+
+        //Validar Tipo de articulo
         if (!isset($_POST['tipoArticulo']) ||  empty($_POST['tipoArticulo'])) {
             $datos['errores']['tipoArticulo'] = 'El campo <b>Tipo de artículo</b> está vacio.';
         } else {
@@ -80,70 +80,67 @@
 
         //Validar Stock minimo
         if (!isset($_POST['stockMinimo'])) {
-            $datos['errores']['stockMinimo'] = 'El campo <b>Stock minimo</b> es inválido.';
+            $datos['errores']['stockMinimo'] = 'El campo <b>Stock mínimo</b> es inválido.';
         } else {
             $stockMinimo = trim($_POST['stockMinimo']);
-            if (!is_numeric($stockMinimo) || intval($stockMinimo) < 0)
-                $datos['errores']['stockMinimo'] = 'El campo <b>Stock minimo</b> es inválido. El valor debe ser de tipo numérico mayor a cero.';
+
+            if (!is_numeric($stockMinimo) || intval($stockMinimo) < 0) {
+                $datos['errores']['stockMinimo'] = 'El campo <b>Stock mínimo</b> es inválido. El valor debe ser de tipo numérico mayor a cero.';
+            } elseif (intval($stockMinimo) < 10) {
+                $datos['errores']['stockMinimo'] = 'El <b>Stock mínimo</b> debe ser al menos <b>10</b>.';
+            }
         }
-       
+
 
         if (!(isset($datos['errores'])) || is_null($datos['errores'])) {
 
-              
-          $sql_exist = "SELECT * 
-                   FROM articulos
-                   WHERE nombre_articulo  = '$nombreArticulo' 
-                   AND codigo_isp = '$codigoIsp' 
-                   AND codigo_barra = '$codigoBarra'
-                   AND concentracion = '$concentracion'";
 
-        $query_exist = mysqli_query($con, $sql_exist);
-        
+            $sql_exist = "SELECT * 
+                    FROM articulos
+                    WHERE nombre_articulo  = '$nombreArticulo' 
+                    OR (codigo_barra = '$codigoBarra' AND concentracion = '$concentracion')";
 
-        if (mysqli_num_rows($query_exist) > 0) {
-          $datos['errores']['sql'] = "Ya existe el articulo con esa dosis";
+            $query_exist = mysqli_query($con, $sql_exist);
 
-        } else {
+            if (mysqli_num_rows($query_exist) > 0) {
+                $datos['errores']['sql'] = "Este artículo ya está registrado con los mismos valores de nombre, concentración o código de barra.";
+            } else {
 
-               $sql_insert = "INSERT INTO articulos (nombre_articulo,
-                                                                 codigo_isp,
-                                                                  codigo_barra, 
-                                                                  concentracion, 
-                                                                  forma_farmaceutica,
-                                                                  via_administracion,
-                                                                  unidad_medida,
-                                                                  laboratorio,
-                                                                  tipo_articulo,
-                                                                  stock_minimo,
-                                                                  estado_articulo,
-                                                                  fecha_creacion,
-                                                                  usuario_creador_id)
-                                  VALUES('$nombreArticulo',
-                                          '$codigoIsp',
-                                          '$codigoBarra',
-                                          '$concentracion',
-                                          '$formaFarmaceutica',
-                                          '$viaAdministracion',
-                                          '$unidadMedida',
-                                          '$laboratorio',
-                                          '$tipoArticulo',
-                                          '$stockMinimo',
-                                          1,
-                                          CURRENT_TIMESTAMP, 
-                                          '$user_id')";
+                $sql_insert = "INSERT INTO articulos (nombre_articulo,
+                                                      codigo_isp,
+                                                      codigo_barra, 
+                                                      concentracion, 
+                                                      forma_farmaceutica,
+                                                      via_administracion,
+                                                      unidad_medida,
+                                                      laboratorio,
+                                                      tipo_articulo,
+                                                      stock_minimo,
+                                                      estado_articulo,
+                                                      fecha_creacion,
+                                                      usuario_creador_id)
+                                    VALUES('$nombreArticulo',
+                                           '$codigoIsp',
+                                           '$codigoBarra',
+                                           '$concentracion',
+                                           '$formaFarmaceutica',
+                                           '$viaAdministracion',
+                                           '$unidadMedida',
+                                           '$laboratorio',
+                                           '$tipoArticulo',
+                                           '$stockMinimo',
+                                           1,
+                                           CURRENT_TIMESTAMP, 
+                                           '$user_id')";
 
-          $query_insert = mysqli_query($con, $sql_insert);
+                $query_insert = mysqli_query($con, $sql_insert);
 
-          if (!$query_insert)
-            $datos['errores']['sql'] = "Error en la carga.";
-          else {
-            $datos['exito'] = "El Artículo fue creado con éxito.";
-          }
-
-
-
-        }
+                if (!$query_insert)
+                    $datos['errores']['sql'] = "Error en la carga.";
+                else {
+                    $datos['exito'] = "El Artículo fue creado con éxito.";
+                }
+            }
         }
     }
 

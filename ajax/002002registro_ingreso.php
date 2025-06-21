@@ -9,7 +9,7 @@
   $datos = array();
   $action = (isset($_REQUEST['action']) && $_REQUEST['action'] != NULL) ? $_REQUEST['action'] : '';
   $user_id = $_SESSION['user_id'];
-  $user_name = $_SESSION['user_name'];
+
   if ($action == 'guardar') {
 
 $stock_minimo = 0;
@@ -74,15 +74,13 @@ $stock_minimo = 0;
 
                             //Validar Tipo de articulo
         if (!isset($_POST['tipo_ingreso']) ||  empty($_POST['tipo_ingreso'])) {
-            $datos['errores']['tipo_ingreso'] = 'El campo <b>tipo_ingreso</b> está vacio.';
+            $datos['errores']['tipo_ingreso'] = 'El campo <b>tipo Ingreso</b> está vacio.';
         } else {
             $tipo_ingreso = trim($_POST['tipo_ingreso']);
         }
 
                               //Validar Tipo de articulo
-        if (!isset($_POST['observacion']) ||  empty($_POST['observacion'])) {
-            $datos['errores']['observacion'] = 'El campo <b>observacion</b> está vacio.';
-        } else {
+        if (isset($_POST['observacion']) || !empty($_POST['observacion'])) {
             $observacion = trim($_POST['observacion']);
         }
 
@@ -94,7 +92,7 @@ $stock_minimo = 0;
         $datos['errores']['archivos'] = "El archivo es demasiado grande. El tamaño máximo permitido es 10 MB.";
       }
     } else {
-      $datos['errores']['archivos'] = "Selecciona un archivo válido.";
+      $datos['errores']['archivo'] = "Selecciona un archivo válido.";
     }
 $codigo_isp = preg_replace('/[^A-Za-z0-9_\-]/', '_', $codigo_isp);
 
@@ -108,7 +106,7 @@ $codigo_isp = preg_replace('/[^A-Za-z0-9_\-]/', '_', $codigo_isp);
  $fecha_hora_chile = date("dmYHis");
 $nombre_archivo_fisico = $fecha_hora_chile . "_" . $codigo_isp;
 $ruta_documentos = $_SERVER["DOCUMENT_ROOT"] . '/Proyecto_bodega/DOCUMENTOS/';
-$ruta_destino = $ruta_documentos . $nombre_archivo_fisico.'.pdf';
+$ruta_destino = $ruta_documentos . $nombre_archivo_fisico.'.'.$extensionArchivo;
 
 // Asegúrate de que el directorio exista
 if (!is_dir($ruta_documentos)) {
@@ -124,11 +122,12 @@ if (!is_dir($ruta_documentos)) {
                                                       tipo_ingreso, 
                                                       proveedor, 
                                                       usuario_creador_id, 
-                                                      fecha_creacion, 
+                                                      fecha_ingreso, 
                                                       usuario_editor_id,
                                                       fecha_edicion,
                                                       observacion,
-                                                      nombre_archivo_fisico) values ('$id_articulo',
+                                                      nombre_archivo_fisico,
+                                                      estado_ingreso) values ('$id_articulo',
                                                                       '$cantidad',
                                                                       '$lote',
                                                                       '$fecha_vencimiento',
@@ -139,7 +138,8 @@ if (!is_dir($ruta_documentos)) {
                                                                       '$user_id',
                                                                       CURRENT_TIMESTAMP,
                                                                       '$observacion',
-                                                                      '$nombre_archivo_fisico')";
+                                                                      '$nombre_archivo_fisico',
+                                                                      1)";
         $query_insert = mysqli_query($con, $sql_insert);
 
         if (!$query_insert) {
@@ -153,7 +153,7 @@ if (!is_dir($ruta_documentos)) {
        
         }
       } else {
-        $datos['errores']['archivos'] = "Error al subir el archivo." ;
+        $datos['errores']['archivo'] = "Error al subir el archivo." ;
       }
     }
   }

@@ -42,7 +42,7 @@
       </div>
       <h4><i class='icon-encuesta icono-titulo'></i> Artículo</h4>
     </div>      
-      <div class="panel-body">
+    
       <?php
       include("modal/002001registro_articulo.php");
        include("modal/002001editar_articulo.php");
@@ -53,7 +53,8 @@
       
       require_once("modal/001002cambiar_password.php");
       
-      */ ?>
+      */ ?> 
+       <div class="panel-body">
       <form class="form-horizontal" role="form" id="datos_cotizacion">
         
             <div class="form-group row">

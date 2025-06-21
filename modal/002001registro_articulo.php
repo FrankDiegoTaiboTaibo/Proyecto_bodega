@@ -1,4 +1,11 @@
-    <?php
+    <style>
+  .label-obligatorio::after {
+    content: " *";
+    color: red;
+  }
+</style>
+
+<?php
     if (isset($con)) {
     ?>
 
@@ -13,32 +20,32 @@
                         <form class="form-horizontal" method="post" id="guardar_articulo" name="guardar_articulo">
                             <div id="resultados_ajax"></div>
                             <div class="form-group">
-                                <label for="nombreArticulo" class="col-sm-4 control-label">Nombre Artículo</label>
+                                <label for="nombreArticulo" class="col-sm-4 control-label label-obligatorio">Nombre Artículo</label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control" id="nombreArticulo" name="nombreArticulo" placeholder="Ej: Paracetamol">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="codigoIsp" class="col-sm-4 control-label">Código ISP</label>
+                                <label for="codigoIsp" class="col-sm-4 control-label label-obligatorio">Código ISP</label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control" id="codigoIsp" name="codigoIsp" placeholder="Ej: F-2145/22">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="codigoBarra" class="col-sm-4 control-label">Código de Barra</label>
+                                <label for="codigoBarra" class="col-sm-4 control-label label-obligatorio">Código de Barra</label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control" id="codigoBarra" name="codigoBarra" placeholder="Ej: 7800001001234">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="concentracion" class="col-sm-4 control-label">Concentración</label>
+                                <label for="concentracion" class="col-sm-4 control-label label-obligatorio">Concentración</label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control" id="concentracion" name="concentracion" placeholder="Ej: 500mg">
                                 </div>
                             </div>
 
                             <div class="form-group">
-    <label for="formaFarmaceutica" class="col-sm-4 control-label">Forma Farmacéutica</label>
+    <label for="formaFarmaceutica" class="col-sm-4 control-label label-obligatorio">Forma Farmacéutica</label>
     <div class="col-sm-7">
         <select class="form-control selectpicker" id="formaFarmaceutica" name="formaFarmaceutica" data-live-search="true" >
             <option value="">Seleccione una opción</option>
@@ -68,7 +75,7 @@
 
 
                             <div class="form-group">
-                                <label for="viaAdministracion" class="col-sm-4 control-label">Vía de Administración</label>
+                                <label for="viaAdministracion" class="col-sm-4 control-label label-obligatorio">Vía de Administración</label>
                                 <div class="col-sm-7">
                                     <select class="form-control selectpicker" id="viaAdministracion" name="viaAdministracion" >
                                         <option value="">Seleccione una opción</option>
@@ -92,7 +99,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="unidadMedida" class="col-sm-4 control-label">Unidad de Medida</label>
+                                <label for="unidadMedida" class="col-sm-4 control-label label-obligatorio">Unidad de Medida</label>
                                 <div class="col-sm-7">
                                     <select class="form-control selectpicker" id="unidadMedida" name="unidadMedida" >
                                         <option value="">Seleccione una opción</option>
@@ -121,14 +128,14 @@
 
 
                             <div class="form-group">
-                                <label for="laboratorio" class="col-sm-4 control-label">Laboratorio</label>
+                                <label for="laboratorio" class="col-sm-4 control-label label-obligatorio">Laboratorio</label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control" id="laboratorio" name="laboratorio" placeholder="Ej: Laboratorio Chile">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="tipoArticulo" class="col-sm-4 control-label">Tipo de Artículo</label>
+                                <label for="tipoArticulo" class="col-sm-4 control-label label-obligatorio">Tipo de Artículo</label>
                                 <div class="col-sm-7">
                                     <select class="form-control selectpicker" id="tipoArticulo" name="tipoArticulo" >
                                         <option value="">Seleccione una opción</option>
@@ -144,9 +151,8 @@
                                 </div>
                             </div>
 
-
                             <div class="form-group">
-                                <label for="stockMinimo" class="col-sm-4 control-label">Stock Mínimo</label>
+                                <label for="stockMinimo" class="col-sm-4 control-label label-obligatorio">Stock Mínimo</label>
                                 <div class="col-sm-7">
                                     <input type="number" class="form-control" id="stockMinimo" name="stockMinimo" placeholder="Ej: 10" min="0" >
                                 </div>
