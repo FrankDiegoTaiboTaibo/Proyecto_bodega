@@ -34,7 +34,7 @@
   <?php
   include("navbar.php");
   ?> 
-    <div class="container-fluid">
+    <div class="container">
     <div class="panel panel-primary">
     <div class="panel-heading">
         <div class="btn-group pull-right">
@@ -86,14 +86,6 @@
                 <option value="0">Deshabilitado</option>
               </select>
             </div>
-              
-              
-              
-              <div class="col-md-2">
-                <button type="button" class="btn btn-default" onclick='load(1);'>
-                  <span class="glyphicon glyphicon-search" ></span> Buscar</button>
-                <span id="loader"></span>
-              </div>
               
             </div>
         

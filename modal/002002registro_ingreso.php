@@ -38,11 +38,9 @@
                       <div class="col-sm-9">
                         <select id="desArticulo" class="selectpicker form-control" title="Seleccione un artículo..." required>
                           <?php
-                          $sql_grupo = "SELECT t1.id_articulo, t1.nombre_articulo, t1.concentracion
+                          $sql_grupo = "SELECT t1.id_articulo, t1.nombre_articulo, t1.concentracion, t1.via_administracion, t1.forma_farmaceutica
                                         FROM articulos t1
-                                        LEFT JOIN ingreso t2 ON t1.id_articulo = t2.id_articulo
-                                        WHERE t1.estado_articulo = 1
-                                        AND t2.id_articulo IS NULL";
+                                        WHERE t1.estado_articulo = 1";
 
                           $query_grupo = mysqli_query($con, $sql_grupo);
 
@@ -50,9 +48,11 @@
                             $id_articulo = $fila_grupo['id_articulo'];
                             $nombre_articulo = $fila_grupo['nombre_articulo'];
                             $concentracion = $fila_grupo['concentracion'];
+                            $via_administracion = $fila_grupo['via_administracion'];
+                            $forma_farmaceutica = $fila_grupo['forma_farmaceutica'];
 
                           ?>
-                            <option value="<?php echo $id_articulo; ?>"><?php echo  $nombre_articulo . ' | ' . $concentracion; ?></option>
+                            <option value="<?php echo $id_articulo; ?>"><?php echo  $nombre_articulo . '  ' . $concentracion.' | '.$forma_farmaceutica.' '.$via_administracion; ?></option>
                           <?php
                           }
                           ?>
@@ -61,13 +61,6 @@
                       </div>
                     </div>
 
-                    <div class="form-group">
-                      <label for="viaAdmin" class="col-sm-3 control-label">Vía Administración</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" id="viaAdmin" name="viaAdmin" readonly>
-                        <span></span>
-                      </div>
-                    </div>
 
                     <div class="form-group">
                       <label for="lab" class="col-sm-3 control-label">Laboratorio</label>
@@ -81,14 +74,6 @@
                       <label for="codIsp" class="col-sm-3 control-label">Código ISP</label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control" id="codIsp" name="codIsp" readonly>
-                        <span></span>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="codBarra" class="col-sm-3 control-label">Código Barra</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" id="codBarra" name="codBarra" readonly>
                         <span></span>
                       </div>
                     </div>
@@ -152,6 +137,15 @@
                         <span></span>
                       </div>
                     </div>
+
+                          <div class="form-group">
+                      <label for="codigoBarra" class="col-sm-5 control-label label-obligatorio">Código de barras</label>
+                      <div class="col-sm-7">
+                        <input type="text" class="form-control" id="codigoBarra" name="codigoBarra" placeholder="7800456789123." required>
+                        <span></span>
+                      </div>
+                    </div>
+
 
                     <div class="form-group">
                       <label for="archivo" class="col-sm-5 control-label label-obligatorio">Carga Documento</label>

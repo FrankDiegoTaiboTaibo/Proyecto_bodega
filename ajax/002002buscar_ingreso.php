@@ -64,13 +64,14 @@ if ($action == 'ajax') {
                 <table class="table table-hover table-small">
                     <thead>
                         <tr class="info">
+                            <th>ID</th>
                             <th>Artículo</th>
-                            <th>Código ISP</th>
-                            <th>Código Barra</th>
-                            <th>Cantidad</th>
                             <th>Lote</th>
+                            <th>Código ISP</th>
+                            <th>Cantidad</th>
                             <th>Tipo Ingrso</th>
                             <th>Proveedor</th>
+                            <th>Código Barra</th>
                             <th>Fecha Vencimiento</th>
                             <th>Creador Ingreso</th>
                             <th>Fecha Ingreso</th>
@@ -87,10 +88,10 @@ if ($action == 'ajax') {
                             $cantidad = $fila['cantidad'];
                             $concentracion = $fila['concentracion'];
                             $codigo_isp = $fila['codigo_isp'];
-                            $codigo_barra = $fila['codigo_barra'];
                             $lote = $fila['lote'];
                             $tipo_ingreso = $fila['tipo_ingreso'];
                             $proveedor = $fila['proveedor'];
+                            $codigo_barra = $fila['codigo_barra'];
                             $fecha_vencimiento = $fila['fecha_vencimiento'];
                             $user_name = $fila['user_name'];
                              $observacion = $fila['observacion'];
@@ -101,19 +102,20 @@ if ($action == 'ajax') {
                             // Si el estado es 0, aplicamos clase 'table-warning'
                         ?>
                             <tr style="<?php echo ($estado_articulo == 0) ? 'background-color: #fff3cd;' : ''; ?>">
+                                <td><?php echo $id_ingreso; ?></td>
                                 <td><?php echo $nombre_articulo . ' ' . $concentracion; ?></td>
-                                <td><?php echo $codigo_isp; ?></td>
-                                <td><?php echo $codigo_barra; ?></td>
-                                <td><?php echo $cantidad; ?></td>
                                 <td><?php echo $lote; ?></td>
+                                <td><?php echo $codigo_isp; ?></td>
+                                <td><?php echo $cantidad; ?></td>
                                 <td><?php echo $tipo_ingreso; ?></td>
                                 <td><?php echo $proveedor; ?></td>
+                                <td><?php echo $codigo_barra; ?></td>
                                 <td style="border-left: 0px"><?php echo date('d/m/Y', strtotime($fecha_vencimiento)); ?></td>
                                 <td><?php echo $user_name; ?></td>
                                 <td style="border-left: 0px"><?php echo date('d/m/Y', strtotime($fecha_creacion)); ?></td>
                                 <td class='text-right'>
                                     <?php if ($estado_articulo != 0) { ?>
-                                        <a href="#" class='btn btn-default' title='Editar Registro' data-id_ingreso='<?php echo $id_ingreso; ?>' data-id_articulo='<?php echo $id_articulo; ?>' data-cantidad='<?php echo $cantidad; ?>' data-lote='<?php echo $lote; ?>' data-fecha_vencimiento='<?php echo date('d/m/Y', strtotime($fecha_vencimiento)); ?>'  data-tipo_ingreso='<?php echo $tipo_ingreso; ?>' data-proveedor='<?php echo $proveedor; ?>' data-observacion='<?php echo $observacion; ?>' data-toggle="modal" data-target="#editarIngreso">
+                                        <a href="#" class='btn btn-default' title='Editar Registro' data-id_ingreso='<?php echo $id_ingreso; ?>' data-id_articulo='<?php echo $id_articulo; ?>' data-cantidad='<?php echo $cantidad; ?>' data-lote='<?php echo $lote; ?>' data-fecha_vencimiento='<?php echo date('d/m/Y', strtotime($fecha_vencimiento)); ?>'  data-tipo_ingreso='<?php echo $tipo_ingreso; ?>' data-proveedor='<?php echo $proveedor; ?>' data-codigo_barra='<?php echo $codigo_barra; ?>' data-observacion='<?php echo $observacion; ?>' data-toggle="modal" data-target="#editarIngreso">
                                             <i class="glyphicon glyphicon-edit"></i>
                                         </a>
                                         <a href="#" class='btn btn-default' title='Descargar Archivo' onclick="descargar('<?php echo $id_ingreso; ?>');">

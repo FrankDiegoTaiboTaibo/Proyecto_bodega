@@ -27,12 +27,7 @@
             $codigoIsp = trim($_POST['codigoIsp']);
         }
 
-        //Validar codigo barra
-        if (!isset($_POST['codigoBarra']) ||  empty($_POST['codigoBarra'])) {
-            $datos['errores']['codigoBarra'] = 'El campo <b>Código Barra</b> está vacio.';
-        } else {
-            $codigoBarra = trim($_POST['codigoBarra']);
-        }
+
 
         //Validar concentración
         if (!isset($_POST['concentracion']) ||  empty($_POST['concentracion'])) {
@@ -91,24 +86,22 @@
             }
         }
 
-
         if (!(isset($datos['errores'])) || is_null($datos['errores'])) {
 
 
             $sql_exist = "SELECT * 
                     FROM articulos
                     WHERE nombre_articulo  = '$nombreArticulo' 
-                    OR (codigo_barra = '$codigoBarra' AND concentracion = '$concentracion')";
+                    AND concentracion = '$concentracion' AND codigo_isp = '$codigoIsp' AND forma_farmaceutica = '$formaFarmaceutica'";
 
             $query_exist = mysqli_query($con, $sql_exist);
 
             if (mysqli_num_rows($query_exist) > 0) {
-                $datos['errores']['sql'] = "Este artículo ya está registrado con los mismos valores de nombre, concentración o código de barra.";
+                $datos['errores']['sql'] = "Este artículo ya está registrado.";
             } else {
 
                 $sql_insert = "INSERT INTO articulos (nombre_articulo,
                                                       codigo_isp,
-                                                      codigo_barra, 
                                                       concentracion, 
                                                       forma_farmaceutica,
                                                       via_administracion,
@@ -121,7 +114,6 @@
                                                       usuario_creador_id)
                                     VALUES('$nombreArticulo',
                                            '$codigoIsp',
-                                           '$codigoBarra',
                                            '$concentracion',
                                            '$formaFarmaceutica',
                                            '$viaAdministracion',

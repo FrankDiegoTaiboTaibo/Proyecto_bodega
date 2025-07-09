@@ -39,8 +39,9 @@
                       <div class="col-sm-9">
                         <select id="desArticulo_mod" name="desArticulo_mod" class="selectpicker form-control" data-live-search="true" title="Seleccione un artículo..." disabled>
                           <?php
-                          $sql_grupo = "SELECT * 
-                                     FROM  articulos WHERE estado_articulo = 1";
+                          $sql_grupo = "SELECT t1.id_articulo, t1.nombre_articulo, t1.concentracion, t1.via_administracion, t1.forma_farmaceutica
+                                        FROM articulos t1
+                                        WHERE t1.estado_articulo = 1";
 
                           $query_grupo = mysqli_query($con, $sql_grupo);
 
@@ -48,21 +49,15 @@
                             $id_articulo = $fila_grupo['id_articulo'];
                             $nombre_articulo = $fila_grupo['nombre_articulo'];
                             $concentracion = $fila_grupo['concentracion'];
+                            $via_administracion = $fila_grupo['via_administracion'];
+                            $forma_farmaceutica = $fila_grupo['forma_farmaceutica'];
 
                           ?>
-                            <option value="<?php echo $id_articulo; ?>"><?php echo  $nombre_articulo . ' | ' . $concentracion; ?></option>
+                            <option value="<?php echo $id_articulo; ?>"><?php echo  $nombre_articulo . '  ' . $concentracion.' | '.$forma_farmaceutica.' '.$via_administracion; ?></option>
                           <?php
                           }
                           ?>
                         </select>
-                        <span></span>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="viaAdmin_mod" class="col-sm-3 control-label">Vía Administración</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" id="viaAdmin_mod" name="viaAdmin_mod" readonly disabled>
                         <span></span>
                       </div>
                     </div>
@@ -83,13 +78,6 @@
                       </div>
                     </div>
 
-                    <div class="form-group">
-                      <label for="codBarra_mod" class="col-sm-3 control-label">Código Barra</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" id="codBarra_mod" name="codBarra_mod" readonly disabled>
-                        <span></span>
-                      </div>
-                    </div>
 
                   </div>
 
@@ -149,6 +137,16 @@
                         <span></span>
                       </div>
                     </div>
+
+                    
+                          <div class="form-group">
+                      <label for="codigoBarra_mod" class="col-sm-5 control-label label-obligatorio">Código de barras</label>
+                      <div class="col-sm-7">
+                        <input type="text" class="form-control" id="codigoBarra_mod" name="codigoBarra_mod" placeholder="7800456789123." required>
+                        <span></span>
+                      </div>
+                    </div>
+
 
                     <div class="form-group">
                       <label for="observacion_mod" class="col-sm-5 control-label">Observacion</label>

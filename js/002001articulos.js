@@ -18,7 +18,6 @@ $("#guardar_articulo").submit(function (event) {
     $('#guardar_datos').attr("disabled", true);
     var nombreArticulo = $("#nombreArticulo").val();
     var codigoIsp = $("#codigoIsp").val();
-    var codigoBarra = $("#codigoBarra").val();
     var concentracion = $("#concentracion").val();
     var formaFarmaceutica = $("#formaFarmaceutica").val();
     var viaAdministracion = $("#viaAdministracion").val();
@@ -36,7 +35,6 @@ $("#guardar_articulo").submit(function (event) {
                 action: action,
                 nombreArticulo: nombreArticulo,
                 codigoIsp: codigoIsp,
-                codigoBarra: codigoBarra,
                 concentracion: concentracion,
                 formaFarmaceutica: formaFarmaceutica,
                 viaAdministracion: viaAdministracion,
@@ -58,7 +56,6 @@ $("#guardar_articulo").submit(function (event) {
                 var class_span_error = 'glyphicon glyphicon-remove form-control-feedback';
                 var valores = ['nombreArticulo',
                     'codigoIsp',
-                    'codigoBarra',
                     'concentracion',
                     'formaFarmaceutica',
                     'viaAdministracion',
@@ -178,7 +175,6 @@ $('#editarArticulo').on('show.bs.modal', function (event) {
     var id_articulo = button.data('id_articulo')
     var nombre_articulo = button.data('nombre_articulo')
     var codigo_isp = button.data('codigo_isp')
-    var codigo_barra = button.data('codigo_barra')
     var concentracion = button.data('concentracion')
     var forma_farmaceutica = button.data('forma_farmaceutica')
     var via_administracion = button.data('via_administracion')
@@ -191,7 +187,6 @@ $('#editarArticulo').on('show.bs.modal', function (event) {
     $("#id_articulo").val(id_articulo);
     $("#nombreArticulo_mod").val(nombre_articulo);
     $("#codigoIsp_mod").val(codigo_isp);
-    $("#codigoBarra_mod").val(codigo_barra);
     $("#concentracion_mod").val(concentracion);
     $("#formaFarmaceutica_mod").selectpicker("val", forma_farmaceutica);
     $("#viaAdministracion_mod").selectpicker("val", via_administracion);
@@ -246,7 +241,6 @@ $("#editar_articulo").submit(function (event) {
     var id = $("#id_articulo").val();
     var nombreArticulo_mod = $("#nombreArticulo_mod").val();
     var codigoIsp_mod = $("#codigoIsp_mod").val();
-    var codigoBarra_mod = $("#codigoBarra_mod").val();
     var concentracion_mod = $("#concentracion_mod").val();
     var formaFarmaceutica_mod = $("#formaFarmaceutica_mod").val();
     var viaAdministracion_mod = $("#viaAdministracion_mod").val();
@@ -266,7 +260,6 @@ $("#editar_articulo").submit(function (event) {
                 id: id,
                 nombreArticulo_mod: nombreArticulo_mod,
                 codigoIsp_mod: codigoIsp_mod,
-                codigoBarra_mod: codigoBarra_mod,
                 concentracion_mod: concentracion_mod,
                 formaFarmaceutica_mod: formaFarmaceutica_mod,
                 viaAdministracion_mod: viaAdministracion_mod,
@@ -289,7 +282,6 @@ $("#editar_articulo").submit(function (event) {
                 var class_span_error = 'glyphicon glyphicon-remove form-control-feedback';
                 var valores = ['nombreArticulo_mod',
                     'codigoIsp_mod',
-                    'codigoBarra_mod',
                     'concentracion_mod',
                     'formaFarmaceutica_mod',
                     'viaAdministracion_mod',

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    load(1);
+   
     $('#fechaVencimiento').datetimepicker({
         date: null,
         viewMode: 'days',
@@ -31,6 +31,8 @@ $(document).ready(function () {
         showUpload: false,
         allowedFileExtensions: ["pdf"]
     });
+load(1);
+    });
 
     // Aquí se activa el envío solo cuando se hace click en #btn_guardar
     $("#btn_guardar").on("click", function (e) {
@@ -44,6 +46,7 @@ $(document).ready(function () {
         var fecha_vencimiento = $("#fechaVencimiento").val();
         var tipo_ingreso = $("#tipoIngreso").val();
         var proveedor = $("#proveedor").val();
+          var codigo_barra = $("#codigoBarra").val();
         var observacion = $("#observacion").val();
         var id_articulo = $("#desArticulo").val();
 
@@ -56,6 +59,7 @@ $(document).ready(function () {
         formData.append("fecha_vencimiento", fecha_vencimiento);
         formData.append("tipo_ingreso", tipo_ingreso);
         formData.append("proveedor", proveedor);
+        formData.append("codigo_barra", codigo_barra);
         formData.append("id_articulo", id_articulo);
         formData.append("observacion", observacion);
 
@@ -88,6 +92,7 @@ $(document).ready(function () {
                     'fecha_vencimiento',
                     'tipo_ingreso',
                     'proveedor',
+                    'codigo_barra',
                     'archivo',
                     'sql'];
 
@@ -98,6 +103,7 @@ $(document).ready(function () {
                     $("#resultados_ajax").html('');
                     $("#archivo").fileinput("upload");
                     $("#archivo").fileinput("clear");
+                    load(1);
                 }
 
                 for (var i = 0; i < valores.length; i++) {
@@ -131,7 +137,9 @@ $(document).ready(function () {
             }
         });
     });
-    event.preventDefault();
+
+$("#fil_fecha").on("dp.change", function (e) {
+  load(1);
 });
 
 function load(page) {
@@ -179,6 +187,7 @@ $('#editarIngreso').on('show.bs.modal', function (event) {
     var fecha_vencimiento = button.data('fecha_vencimiento')
     var tipo_ingreso = button.data('tipo_ingreso')
     var proveedor = button.data('proveedor')
+    var codigo_barra = button.data('codigo_barra')
     var observacion = button.data('observacion')
 
     $("#id_ingreso").val(id_ingreso);
@@ -188,6 +197,7 @@ $('#editarIngreso').on('show.bs.modal', function (event) {
     $("#fechaVencimiento_mod").val(fecha_vencimiento);
     $("#tipoIngreso_mod").selectpicker("val", tipo_ingreso);
     $("#proveedor_mod").val(proveedor);
+     $("#codigoBarra_mod").val(codigo_barra);
     $("#observacion_mod").val(observacion);
 
     $.ajax({
@@ -197,10 +207,8 @@ $('#editarIngreso').on('show.bs.modal', function (event) {
         dataType: "json",
         success: function (data) {
             if (data) {
-                $('#viaAdmin_mod').val(data.forma_farmaceutica + ' ' + data.via_administracion || '');
                 $('#lab_mod').val(data.laboratorio || '');
                 $('#codIsp_mod').val(data.codigo_isp || '');
-                $('#codBarra_mod').val(data.codigo_barra || '');
             }
         }
     });
@@ -218,10 +226,8 @@ $('#editarIngreso').on('show.bs.modal', function (event) {
                 dataType: "json",
                 success: function (data) {
                     if (data) {
-                        $('#viaAdmin').val(data.forma_farmaceutica + ' ' + data.via_administracion || '');
                         $('#lab').val(data.laboratorio || '');
                         $('#codIsp').val(data.codigo_isp || '');
-                        $('#codBarra').val(data.codigo_barra || '');
                     }
                 },
                 error: function () {
@@ -241,6 +247,7 @@ $("#actualizar_datos").on("click", function () {
     var fechaVencimiento_mod = $("#fechaVencimiento_mod").val();
     var tipoIngreso_mod = $("#tipoIngreso_mod").val();
     var proveedor_mod = $("#proveedor_mod").val();
+    var codigoBarra_mod = $("#codigoBarra_mod").val();
     var observacion_mod = $("#observacion_mod").val();
     var action = 'ajax';
     var pagina_actual = $('#pagina_actual').val();
@@ -255,6 +262,7 @@ $("#actualizar_datos").on("click", function () {
             fechaVencimiento_mod: fechaVencimiento_mod,
             tipoIngreso_mod: tipoIngreso_mod,
             proveedor_mod: proveedor_mod,
+            codigoBarra_mod: codigoBarra_mod,
             observacion_mod: observacion_mod
         },
         dataType: "json",
@@ -272,6 +280,7 @@ $("#actualizar_datos").on("click", function () {
                 'fechaVencimiento_mod',
                 'tipoIngreso_mod',
                 'proveedor_mod',
+                'codigoBarra_mod',
                 'update'];
 
             if (datos.hasOwnProperty('errores')) {
@@ -279,7 +288,7 @@ $("#actualizar_datos").on("click", function () {
             } else {
                 msg = mensaje_retro('success', 'Bien hecho', datos['exito']);
                 $("#resultados_ajax_ingreso").html('');
-                load(pagina_actual);
+                load(1);
             }
 
             for (var i = 0; i < valores.length; i++) {

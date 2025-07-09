@@ -159,7 +159,7 @@ if ($action == 'ajax') {
         }
         ?>
         <tr>
-          <td colspan=9><span class="pull-right">
+          <td colspan=10><span class="pull-right">
               <?php
               echo paginate($reload, $page, $total_pages, $adjacents);
               ?></span></td>

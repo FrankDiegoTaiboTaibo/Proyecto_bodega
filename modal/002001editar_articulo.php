@@ -29,12 +29,7 @@ if (isset($con)) {
                                     <input type="text" class="form-control" id="codigoIsp_mod" name="codigoIsp_mod" placeholder="Ej: F-2145/22">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="codigoBarra_mod" class="col-sm-4 control-label">Código de Barra</label>
-                                <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="codigoBarra_mod" name="codigoBarra_mod" placeholder="Ej: 7800001001234">
-                                </div>
-                            </div>
+                  
                             <div class="form-group">
                                 <label for="concentracion_mod" class="col-sm-4 control-label">Concentración</label>
                                 <div class="col-sm-7">

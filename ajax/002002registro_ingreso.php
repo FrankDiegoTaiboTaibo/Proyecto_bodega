@@ -73,6 +73,25 @@ $stock_minimo = 0;
         }
 
                             //Validar Tipo de articulo
+        if (!isset($_POST['codigo_barra']) ||  empty($_POST['codigo_barra'])) {
+            $datos['errores']['codigo_barra'] = 'El campo <b>Código Barra</b> está vacio.';
+        } else {
+            $codigo_barra = trim($_POST['codigo_barra']);
+
+            $select_barra = "SELECT * 
+                            FROM articulos t1
+                            LEFT JOIN ingreso t2 ON t1.id_articulo = t2.id_articulo 
+                            WHERE t1.id_articulo = '$id_articulo' AND t2.codigo_barra = '$codigo_barra'";
+                            $query_barra = mysqli_query($con, $select_barra);
+
+if (mysqli_num_rows($query_barra) > 0) {
+    $datos['errores']['codigo_barra'] = 'Ya existe el código de barra para este <b>artículo</b>.';
+}
+
+
+        }
+
+                            //Validar Tipo de articulo
         if (!isset($_POST['tipo_ingreso']) ||  empty($_POST['tipo_ingreso'])) {
             $datos['errores']['tipo_ingreso'] = 'El campo <b>tipo Ingreso</b> está vacio.';
         } else {
@@ -99,11 +118,20 @@ $codigo_isp = preg_replace('/[^A-Za-z0-9_\-]/', '_', $codigo_isp);
         }
 
 
-
-
-
     if (!(isset($datos['errores'])) || is_null($datos['errores'])) {
- $fecha_hora_chile = date("dmYHis");
+
+        $verificar_lote = "SELECT id_ingreso FROM ingreso 
+                   WHERE id_articulo = '$id_articulo' 
+                   AND lote = '$lote'
+                   AND estado_ingreso = 1
+                   LIMIT 1";
+
+$query_lote = mysqli_query($con, $verificar_lote);
+
+if (mysqli_num_rows($query_lote) > 0) {
+    $datos['errores']['lote'] = 'Ya existe un ingreso con el mismo <b>lote</b> para este <b>artículo</b>.';
+}else{
+     $fecha_hora_chile = date("dmYHis");
 $nombre_archivo_fisico = $fecha_hora_chile . "_" . $codigo_isp;
 $ruta_documentos = $_SERVER["DOCUMENT_ROOT"] . '/Proyecto_bodega/DOCUMENTOS/';
 $ruta_destino = $ruta_documentos . $nombre_archivo_fisico.'.'.$extensionArchivo;
@@ -120,7 +148,8 @@ if (!is_dir($ruta_documentos)) {
                                                       lote, 
                                                       fecha_vencimiento, 
                                                       tipo_ingreso, 
-                                                      proveedor, 
+                                                      proveedor,
+                                                      codigo_barra, 
                                                       usuario_creador_id, 
                                                       fecha_ingreso, 
                                                       usuario_editor_id,
@@ -133,6 +162,7 @@ if (!is_dir($ruta_documentos)) {
                                                                       '$fecha_vencimiento',
                                                                       '$tipo_ingreso',
                                                                       '$proveedor',
+                                                                      '$codigo_barra',
                                                                       '$user_id',
                                                                       CURRENT_TIMESTAMP,
                                                                       '$user_id',
@@ -155,6 +185,12 @@ if (!is_dir($ruta_documentos)) {
       } else {
         $datos['errores']['archivo'] = "Error al subir el archivo." ;
       }
+}
+
+
+
+
+
     }
   }
 

@@ -31,12 +31,7 @@
                                     <input type="text" class="form-control" id="codigoIsp" name="codigoIsp" placeholder="Ej: F-2145/22">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="codigoBarra" class="col-sm-4 control-label label-obligatorio">Código de Barra</label>
-                                <div class="col-sm-7">
-                                    <input type="text" class="form-control" id="codigoBarra" name="codigoBarra" placeholder="Ej: 7800001001234">
-                                </div>
-                            </div>
+                  
                             <div class="form-group">
                                 <label for="concentracion" class="col-sm-4 control-label label-obligatorio">Concentración</label>
                                 <div class="col-sm-7">

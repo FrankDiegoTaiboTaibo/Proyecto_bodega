@@ -59,7 +59,6 @@
                             <th>Via Administración</th>
                             <th>Laboratorio</th>
                             <th>Código ISP</th>
-                            <th>Código Barra</th>
                             <th>Stock Mínimo</th>
 
                             <th class='text-right'>Acciones</th>
@@ -72,7 +71,6 @@
                             $id_articulo = $row['id_articulo'];
                             $nombre_articulo = $row['nombre_articulo'];
                             $codigo_isp = $row['codigo_isp'];
-                            $codigo_barra = $row['codigo_barra'];
                             $concentracion = $row['concentracion'];
                             $forma_farmaceutica = $row['forma_farmaceutica'];
                             $via_administracion = $row['via_administracion'];
@@ -91,13 +89,12 @@
                                 <td><?php echo $forma_farmaceutica . ' ' . $via_administracion; ?></td>
                                 <td><?php echo $laboratorio; ?></td>
                                 <td><?php echo $codigo_isp; ?></td>
-                                <td><?php echo $codigo_barra; ?></td>
                                 <td><?php echo $stock_minimo; ?></td>
                                 <?php
                                 ?>
                                 <td class='text-right'>
                                     <a href="#" class="btn btn-default <?php echo $estado_articulo == 1 ? 'btn-success' : 'btn-danger'; ?>" title="Activar/Desactivar" onclick="cambiar_estado('<?php echo $id_articulo; ?>','<?php echo $page; ?>');"><i class="icon-switch"></i></a>
-                                    <a href="#" class='btn btn-default' title='Editar Registro' data-id_articulo='<?php echo $id_articulo; ?>' data-nombre_articulo='<?php echo $nombre_articulo; ?>' data-codigo_isp='<?php echo $codigo_isp; ?>' data-codigo_barra='<?php echo $codigo_barra; ?>' data-concentracion='<?php echo $concentracion; ?>' data-forma_farmaceutica='<?php echo $forma_farmaceutica; ?>' data-via_administracion='<?php echo $via_administracion; ?>' data-unidad_medida='<?php echo $unidad_medida; ?>' data-laboratorio='<?php echo $laboratorio; ?>' data-tipo_articulo='<?php echo $tipo_articulo; ?>' data-stock_minimo='<?php echo $stock_minimo; ?>' data-toggle="modal" data-target="#editarArticulo"><i class="glyphicon glyphicon-edit"></i></a>
+                                    <a href="#" class='btn btn-default' title='Editar Registro' data-id_articulo='<?php echo $id_articulo; ?>' data-nombre_articulo='<?php echo $nombre_articulo; ?>' data-codigo_isp='<?php echo $codigo_isp; ?>' data-concentracion='<?php echo $concentracion; ?>' data-forma_farmaceutica='<?php echo $forma_farmaceutica; ?>' data-via_administracion='<?php echo $via_administracion; ?>' data-unidad_medida='<?php echo $unidad_medida; ?>' data-laboratorio='<?php echo $laboratorio; ?>' data-tipo_articulo='<?php echo $tipo_articulo; ?>' data-stock_minimo='<?php echo $stock_minimo; ?>' data-toggle="modal" data-target="#editarArticulo"><i class="glyphicon glyphicon-edit"></i></a>
                                     <a href="#" class='btn btn-danger' title='Borrar Registro' onclick="eliminar('<?php echo $id_articulo; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
                                 </td>
                             </tr>

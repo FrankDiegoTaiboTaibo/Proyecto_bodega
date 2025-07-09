@@ -25,12 +25,6 @@
             $codigoIsp_mod = trim($_POST['codigoIsp_mod']);
         }
 
-        //Validar codigo barra
-        if (!isset($_POST['codigoBarra_mod']) ||  empty($_POST['codigoBarra_mod'])) {
-            $datos['errores']['codigoBarra_mod'] = 'El campo <b>Código Barra</b> está vacio.';
-        } else {
-            $codigoBarra_mod = trim($_POST['codigoBarra_mod']);
-        }
 
         //Validar concentración
         if (!isset($_POST['concentracion_mod']) ||  empty($_POST['concentracion_mod'])) {
@@ -93,8 +87,7 @@
                 $sql_exist = "SELECT * 
                               FROM articulos
                               WHERE id_articulo <> '$id' AND nombre_articulo = '$nombreArticulo_mod'
-                                AND (codigo_barra = '$codigoBarra_mod' 
-                                OR concentracion = '$concentracion_mod')";
+                                AND concentracion = '$concentracion_mod' AND codigo_isp = '$codigoIsp_mod' AND forma_farmaceutica = '$formaFarmaceutica_mod' AND laboratorio = '$laboratorio_mod'";
 
             $query_exist = mysqli_query($con, $sql_exist);
 
@@ -104,7 +97,6 @@
                 $sql_update = "UPDATE articulos
                            SET nombre_articulo = '$nombreArticulo_mod',
                                codigo_isp = '$codigoIsp_mod',
-                               codigo_barra ='$codigoBarra_mod',
                                concentracion = '$concentracion_mod',
                                forma_farmaceutica = '$formaFarmaceutica_mod',
                                via_administracion = '$viaAdministracion_mod',
